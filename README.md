@@ -1,29 +1,107 @@
-Final Project: NLP Analysis (Group 20)
-Overview: This repository contains the work of Group 20's final project focusing on various aspects of Natural Language Processing (NLP). The project explores techniques such as TFIDF, LSTM, and NER, combined with machine learning models like XGBoost and approaches in explainable AI.
+Tweet Virality Classification & Explainability
 
-Project Description: This project proposes an approach to classify the virality of tweets with respect to the user group and provide a visual explanation on what features contribute to virality by utilizing two models – Named Entity Recognition (NER) with XGBoost and  BERT Encoder with LSTM. It also aims to experiment with GAN (Generative Adversarial Networks), A reinforced learning approach and prompt engineering– based solution to optimize the tweets from results yielded through the analysis. The models’ performances were compared with base-line models at each step.
+Classifying the virality of tweets (by user group) and explaining why using multiple NLP pipelines: TF-IDF + FNN/XGBoost, BERT Encoder + LSTM, and NER + XGBoost, plus explorations in GANs, reinforcement-style optimization, and prompt engineering. Each approach is benchmarked against simple baselines, with visual explainability throughout. 
+GitHub
 
-Dataset: Our analyses are based on multiple datasets captured in .csv files:
-dataset.csv: Main dataset for model training.
-dataset_score.csv: Scores for evaluation.
-dataset_viralscore.csv & dataset_viralscore_2.csv: Used for viral score prediction.
+🔍 Project Goals
 
-Files and Notebooks:
-EDA.ipynb: Exploratory Data Analysis of our datasets.
-ITIDF_LSTM_LIME.ipynb: Implementation of TFIDF with LSTM and LIME for model explainability.
-NER and Explainable AI.ipynb: Named Entity Recognition combined with XG Boost and explainable AI methods.
-generator-discriminator-final.ipynb: Exploration of Generative Adversarial Networks.
-prompt-engineering final.ipynb: Techniques in prompt engineering for better model training.
-sentiment_analysis_results.csv: Results of the sentiment analysis.
-feature_impact.csv: Analysis of feature impacts on the models.
+Predict tweet virality with respect to user groups.
+
+Provide visual explanations of features contributing to virality (e.g., tokens, entities).
+
+Explore generation/optimization ideas (GANs, RL-style loops, prompt engineering) to improve tweets. 
+GitHub
+
+📦 Data
+
+CSV files used across experiments (place in / or a data/ folder to suit your workflow):
+
+File	Purpose
+dataset.csv	Main training/evaluation dataset
+dataset_score.csv	Scores/labels for evaluation
+dataset_viralscore.csv	Supplemental viral-score features
+dataset_viralscore_2.csv	Additional viral-score features
+
+(See repo root for the exact filenames.) 
+GitHub
+
+🗂️ Repository Contents
+
+EDA.ipynb — Exploratory data analysis
+
+EDACont_WordFeatureImportance.ipynb — Extended EDA + word feature importance
+
+TFIDF_LSTM_LIME.ipynb — TF-IDF with LSTM + LIME explainability (file appears as ITIDF_LSTM_LIME.ipynb in repo)
+
+NER and Explainable AI.ipynb — NER + XGBoost with explainable AI (typo in repo filename: “Eplainable”)
+
+generator-discriminator-final.ipynb — GAN exploration (generator/discriminator)
+
+prompt-engineering final.ipynb — Prompt engineering experiments
+
+sentiment_analysis_results.csv — Sentiment results
+
+feature_impact.csv — Feature impact summaries
+
+Refer to the repo file list for exact names/spacing. 
+GitHub
+
+⚙️ Quickstart
+# (1) Create & activate a virtual environment (recommended)
+python -m venv .venv
+# macOS/Linux:
+source .venv/bin/activate
+# Windows (Powershell):
+.venv\Scripts\Activate.ps1
+
+# (2) Install core dependencies
+pip install numpy pandas scikit-learn xgboost torch transformers jupyterlab lime spacy matplotlib
+
+# (3) (Optional) Download spaCy model if NER pipeline needs it
+python -m spacy download en_core_web_sm
 
 
-Team members and contributions:
+Run notebooks in this order (suggested):
 
-• Pazin Tarasansombat: TF-IDF + FNN, BERT Encoder+ LSTM, GAN, Slides, Report, Code Cleanup
-• Varsha Ranganathan: Exploratory Data Analysis, SentimentAnalysis with LSTM, TF-IDF + FNN, Slides, Report, Code Cleanup
-• Adithya Vibakar: GAN, Prompt Engineering, Slides, Report, Code Cleanup
-• Anirudh Krishnan Venkatanathan: TF-IDF + XGBoost, XGBoost + NER, Slides, Report, Code Cleanup
+EDA.ipynb → schema & distribution checks
 
-Acknowledgments
-We would like to thank our instructors and peers for their guidance and feedback throughout the course of this project.
+TFIDF_LSTM_LIME.ipynb and NER and Explainable AI.ipynb → training + explainability
+
+generator-discriminator-final.ipynb, prompt-engineering final.ipynb → augmentation/optimization
+
+Artifacts (plots/CSVs) are saved alongside notebooks or to the repo root (per notebook settings). 
+GitHub
+
+🧪 Methods (at a glance)
+
+Classical + DL baselines: TF-IDF → FNN/XGBoost; BERT encoder → LSTM
+
+Information extraction: spaCy-style NER, features into XGBoost
+
+Explainability: LIME + feature impact CSVs for transparency
+
+Advanced ideas: GAN data augmentation; reinforcement-style optimization; prompt strategies
+
+Each model is evaluated against baselines for incremental gains. 
+GitHub
+
+📊 Results
+
+Comparative metrics across TF-IDF/FNN/XGBoost, BERT-LSTM, and NER-XGBoost
+
+Local & global explanations (LIME plots, feature impact tables)
+
+Observations from prompt-engineering and GAN/RL-style experiments
+
+Add concrete scores/figures here after final runs; notebooks currently contain detailed outputs. 
+GitHub
+
+🛣️ Roadmap / Future Work
+
+Broader hyperparameter sweeps & CV
+
+Domain adaptation, debiasing
+
+Stronger NER models & sentence-level features
+
+More robust RL-style optimization loops
